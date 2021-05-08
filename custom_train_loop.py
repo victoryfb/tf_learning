@@ -7,6 +7,9 @@ from tensorflow import keras
 from tensorflow.keras import layers
 import tensorflow_datasets as tfds
 
+physical_devices = tf.config.list_physical_devices('GPU')
+tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
 (ds_train, ds_test), ds_info = tfds.load('mnist', split=['train', 'test'],
                                          shuffle_files=True,
                                          as_supervised=True, with_info=True)
